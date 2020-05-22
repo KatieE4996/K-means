@@ -9,10 +9,10 @@ import numpy as np
 
 def kmeans(n,row):
     # =============================================================================
-    #     Step 1: Call initalize
-    #     Step 2: While loop will continue until the clusters stop changing
-    #     Step 3: wcss to find the sum of squares for each K so that the optimal K
-    #     is found
+    #     Step 1: Call to initalize.
+    #     Step 2: Execute while loop, which will continue until the clusters stop changing.
+    #     Step 3: Use the Elbow Method (wcss), to find the sum of squares for each K so that the optimal K
+    #     is found.
     # =============================================================================
     initalize(n, row)
     
@@ -29,7 +29,7 @@ def kmeans(n,row):
     
 def initalize(n, row):
     # =============================================================================
-    #     Step 1: Assign all data poins to a cluster 
+    #     Step 1: Assign all data points to a cluster 
     #     Step 2: Call update_centroids to define the k[n] centroids based
     #     on the clusters array
     # =============================================================================
@@ -47,15 +47,15 @@ def initalize(n, row):
 
 def update_clusters(n, row):
     #==============================================================================
-    #     Clusters is an array that holds the IDS cooresponding with 0-(k-1) so that
+    #     Clusters is an array that holds the IDS corresponding with 0-(k-1) so that
     #     the original data isn't modified
     #
     #     Step 1: Copy the old clusters into an array called new_clusters
     #     Step 2: Calculate the Euclidean distance (Ed) from each centroid
     #     (e.g. the mean or center of the cluster)
-    #     Step 3: The smallest Ed is noted and the cooresponding ID is saved
+    #     Step 3: The smallest Ed is noted and the corresponding ID is saved
     #     into new_clusters
-    #     Step 4: Check if new_clusters == clusters if so return False (K-means is done)
+    #     Step 4: Check if new_clusters == clusters. If it does equal then return False (K-means is done)
     #     Step 5: Check that there is cluster data
     #     Step 6: Save the new_cluster array into cluster array and return True
     #==============================================================================
@@ -88,13 +88,13 @@ def update_clusters(n, row):
     
 def e_distances(n, row, col):
     #==============================================================================
-    #     Euclideian distance is used to help assign a data point to the appropriate
-    #     centroid or mean of a cluser
+    #     This method named e_distances is used to assign a data point to the appropriate
+    #     centroid or mean of a cluster
     #
     #     Formula is sqrt((x[i] - m[i])^2)
     #
-    #     This has to be calulated for each data point at each K
-    #     Called in update clusters 
+    #     This is calculated for data point at each K
+    #     Method is called in update clusters 
     #==============================================================================
     sum = 0.0
     sum += (data[row][col]-centroids[n]) ** 2
@@ -102,7 +102,7 @@ def e_distances(n, row, col):
     
 def update_centroids(n, row):
     # =============================================================================
-    #     Finds the centroid (mean or average) of each cluster
+    #     This method named update_centoids finds the centroid (mean or average) of each cluster
     # =============================================================================
     counter = np.zeros([k[n]], dtype = np.int)
     new_centroids = np.zeros([k[n]], dtype = np.float64)
@@ -121,7 +121,7 @@ def update_centroids(n, row):
         
 def wcss(n, row):
     #==============================================================================
-    #     Calculates the best K using sum of squared distances
+    #     This method calculates the best K using sum of squared distances
     #
     #     Step 1: Save the centroids into an array so that the datapoint corresponds
     #     with the cluster that centroid is in.
@@ -163,7 +163,7 @@ def wcss(n, row):
 
 def optimized_k(row):
     #==============================================================================
-    #      Step 1: Sift through the data, when the sum is greater than its predecessor
+    #      This method called optimized_k will sift through the data, when the sum is greater than its predecessor
     #      then the predecessor is the optimal K
     #==============================================================================   
     l = 0
@@ -178,10 +178,10 @@ def optimized_k(row):
                 
 def file_write():
     #==============================================================================
-    #      Wites the opt_K into a new text file
+    #      This mehtod writes the opt_K into a new text file
     #
-    #      Note: Orginal file name manually but if suggested implementation from
-    #       file_read() is used then use the variable name
+    #      Note: Orginal filename was manually entered.  If possible implementation from
+    #       file_read() by passing in a variable name
     #==============================================================================
     f = open("output.txt", "w")
     f.write("0.txt\n")
@@ -192,11 +192,11 @@ def file_write():
                
 def file_read():
     # =============================================================================
-    #     Reads the txt file and saves the whole file into a numpy array
+    #     This method reads the txt file and saves the entire file into a numpy array
     #
-    #     Note: To make the code work with the perameters provided file name is
-    #       hard-coded in the work eniviorment the path to the file or file name can
-    #       be saved as a variable.
+    #     Note: To make the code work with the parameters of the interview, the file was
+    #       saved in the work environment and the program uses the filename indicated.  
+    #       In a production implementation this should be optimized to use a variable that would be passed in upon execution.
     # =============================================================================
     global data #will hold all datasets from the file
 
@@ -213,10 +213,10 @@ def main():
     #    Step 3: Start a while loop to preform Kmeans for each dataset at each K
     #    Step 4: Calls file_write to output the results
     #
-    #    Note: with large datasets the program takes about 12-20 minitues to compile
-    #       but with parrallel memories you can have multiple instances of the code
-    #       running, or the code could be modified to only look at one or two datasets
-    #       in a file using and ID system infront of each set
+    #    Note: with large datasets the program takes about 12-20 minutes to execute.
+    #       Multiple instances of the code could be executed in parallel.
+    #       Code could be further improved to provide flexibility of limiting execution of selected datasets
+    #       using a file to pass in desired dataset.
     #==============================================================================
     global k, wcss_sum, opt_K
     n = [2,3,4,5,6,7,8,9,10] #k is the number of clusters 
