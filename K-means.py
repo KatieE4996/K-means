@@ -55,8 +55,8 @@ def update_clusters(n, row):
     #     (e.g. the mean or center of the cluster)
     #     Step 3: The smallest Ed is noted and the corresponding ID is saved
     #     into new_clusters
-    #     Step 4: Check if new_clusters == clusters. If it does equal then return False (K-means is done)
-    #     Step 5: Check that there is cluster data
+    #     Step 4: Test if new_clusters == clusters, if it does equal then return False (K-means is done)
+    #     Step 5: Validate that there is cluster data
     #     Step 6: Save the new_cluster array into cluster array and return True
     #==============================================================================
     col = len(data[row])
@@ -163,8 +163,8 @@ def wcss(n, row):
 
 def optimized_k(row):
     #==============================================================================
-    #      This method called optimized_k will sift through the data, when the sum is greater than its predecessor
-    #      then the predecessor is the optimal K
+    #      This method called optimized_k will sift through the data,
+    #      when the sum is greater than its predecessor the predecessor is the optimal K.
     #==============================================================================   
     l = 0
     m = l + 1
